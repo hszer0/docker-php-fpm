@@ -1,5 +1,5 @@
-FROM php:7.3-fpm
+FROM php:7.3-fpm-alpine
 
-RUN apt-get update && apt-get install -y $PHPIZE_DEPS \
-    && docker-php-ext-install mysqli http \
-    && docker-php-ext-enable mysqli http
+RUN apk update && apk add --no-cache $PHPIZE_DEPS
+RUN docker-php-ext-install mysqli
+RUN docker-php-ext-enable mysqli
