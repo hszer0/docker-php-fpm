@@ -1,6 +1,7 @@
 FROM php:7.3-fpm-alpine
 
 RUN apk update && apk add --no-cache $PHPIZE_DEPS
-RUN docker-php-ext-install mysqli
+RUN apk add --no-cache freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev
+RUN docker-php-ext-install mysqli gd
 RUN docker-php-ext-enable mysqli
 RUN chown -R www-data:www-data /var/www
